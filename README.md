@@ -38,3 +38,27 @@ double converted_from_wchar = intelligent_cast<double>(val);
 ```
 ###Advance usage
 
+Including "OperatorOverloadExtension.h", a combination of operator+ of several types is available.
+
+such as:
+
+```c++
+#include "IntelligentCast.h"
+#include "OperatorOverloadExtension.h"
+
+//  std::string + integer
+std::string str="results are ";
+std::string converted = str + 10 + " and " + 5.5;
+// converted should be "results are 10 and 5.5"
+```
+
+This operator+ overload works only when  
+(1) A type of a variable of left side is either of std::string or std::wstring.  
+(2) No other operator+ overload of the two exists.
+
+for example:
+```c++
+std::string str="results are ";
+std::string converted = 1 + str + 10 + " and " + 5.5; // never compiles because of (1).
+std::string converted = str + "10"; // prefer existing overload because of (2).
+```
