@@ -8,11 +8,14 @@ A simple c++11 type converter between string and numeric value.
 
 #include "IntelligentCast.h"
 
-// convert to string from integer 
-std::string converted_from_char = intelligent_cast<std::string>(100);
+// convert to string from integer  
+std::string string_from_int = intelligent_cast<std::string>(100);
 
 // convert to integer from string
-int converted_from_wchar = intelligent_cast<int>("100");
+int int_from_char = intelligent_cast<int>("100");
+
+// convert to wchar from char
+std::wstring wstring_from_string  = intelligent_cast<std::wstring>("test");
 ```
 
 All of a combination of the two from below is possible.
